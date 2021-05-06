@@ -9,6 +9,7 @@ SELECT
   o.frequency                                                                                AS 'frequency',
   DATE_FORMAT(o.startDate, '%d/%b/%Y')                                                       AS 'drug_start',
   o.additional_instructions                                                                  AS 'additional_instr',
+  DATE_FORMAT(o.autoExpireDate, '%d/%b/%Y')                                                  AS 'auto_expire',
   DATE_FORMAT(o.stopDate, '%d/%b/%Y')                                                        AS 'drug_stop',
   o.location                                                                                 AS 'location',
   o.duration                                                                                 AS 'duration',
@@ -29,8 +30,8 @@ FROM
      coalesce(rou.code, routecn.name)                                                             AS 'route',
      coalesce(fre.code, freqcn.name)                                                              AS 'frequency',
      IF(Date(orders.scheduled_date) IS NULL, orders.date_activated, orders.scheduled_date)        AS 'startDate',
-     IF(Date(orders
-     .date_stopped) IS NULL, orders.auto_expire_date, orders.date_stopped)                        AS 'stopDate',
+     orders.auto_expire_date                                                                      AS 'autoExpireDate',
+     orders.date_stopped                                                                          AS 'stopDate',
      pp.patient_id,
      orders.order_id,
      ln.name                                                                                      AS 'location',
