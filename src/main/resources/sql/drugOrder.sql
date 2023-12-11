@@ -68,5 +68,5 @@ FROM
      LEFT JOIN concept_reference_term_map_view stopped_reason ON stopped_order.order_reason = stopped_reason.concept_id and stopped_reason.concept_reference_source_name='MSF-INTERNAL' and stopped_reason.concept_map_type_name= 'SAME-AS'
      LEFT JOIN location ln ON ln.location_id = e.location_id
   ) o
-GROUP BY o.patient_id,o.order_id, o.programId, o.drugCode, o.drugName, o.dose, o.units, o.route, o.frequency, o.startDate, o.autoExpireDate, o.stopDate, o.location, o.duration, o.durationUnits, o.dot, o.dispense, o.stopped_order_reason, o.order_reason_non_coded
-ORDER BY o.patient_id, o.date_enrolled;
+GROUP BY patient_id, order_id
+ORDER BY patient_id, date_enrolled;
