@@ -20,10 +20,10 @@ jobs:
           distribution: 'corretto'
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
-      - name: gradlew clean assemble
-        run: ./gradlew clean assemble && /gradlew clean buildRPM -x check
-      # - name: BuildRPM
-      #   run:  /gradlew clean buildRPM -x check
+      # - name: gradlew clean assemble
+      #   run: ./gradlew clean assemble 
+      - name: BuildRPM
+        run:  /gradlew clean buildRPM -x check
       - name: Build docker image
         run: docker build -t amman-exports:latest -f package/docker/Dockerfile .
       - name: Run Trivy vulnerability scanner
