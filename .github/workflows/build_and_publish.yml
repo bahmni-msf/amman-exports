@@ -23,7 +23,7 @@ jobs:
       - name: gradlew clean assemble
         run: ./gradlew clean assemble 
       - name: BuildRPM
-        run: ./gradlew clean buildRPM -x check --stacktrace --debug
+        run: /bin/bash -c "./gradlew clean buildRPM -x check"
       - name: Build docker image
         run: docker build -t amman-exports:latest -f package/docker/Dockerfile .
       - name: Run Trivy vulnerability scanner
