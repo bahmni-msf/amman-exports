@@ -18,12 +18,10 @@ jobs:
         with:
           java-version: '8'
           distribution: 'corretto'
-      - name: Setup Gradle
+      - name: Build with Gradle
         uses: gradle/gradle-build-action@v2
-      - name: gradlew clean assemble
-        run: ./gradlew clean assemble 
-      - name: BuildRPM
-        run: /bin/bash -c "./gradlew clean buildRPM -x check"
+        with:
+          arguments: build
       - name: Build docker image
         run: docker build -t amman-exports:latest -f package/docker/Dockerfile .
       - name: Run Trivy vulnerability scanner
