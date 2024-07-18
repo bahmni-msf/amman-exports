@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - ocp-dev-bahmni-lite
+      - githubactions
   workflow_dispatch:
 
 jobs:
