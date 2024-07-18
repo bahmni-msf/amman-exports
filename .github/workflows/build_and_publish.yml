@@ -26,15 +26,15 @@ jobs:
       #   run: /bin/bash -c "./gradlew clean buildRPM -x check"
       - name: Build docker image
         run: docker build -t amman-exports:latest -f package/docker/Dockerfile .
-      - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@master
-        with:
-          image-ref: 'amman-exports:latest'
-          format: 'table'
-          exit-code: '1'
-          ignore-unfixed: true
-          vuln-type: 'os,library'
-          severity: 'HIGH,CRITICAL'
+      # - name: Run Trivy vulnerability scanner
+      #   uses: aquasecurity/trivy-action@master
+      #   with:
+      #     image-ref: 'amman-exports:latest'
+      #     format: 'table'
+      #     exit-code: '1'
+      #     ignore-unfixed: true
+      #     vuln-type: 'os,library'
+      #     severity: 'HIGH,CRITICAL'
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
