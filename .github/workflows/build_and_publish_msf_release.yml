@@ -31,6 +31,7 @@ jobs:
           exit-code: '1'
           ignore-unfixed: true
           vuln-type: 'library'
+          trivyignores: ./.trivyignore
           severity: 'HIGH,CRITICAL'
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
